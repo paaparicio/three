@@ -1,0 +1,11 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "js/main.js",
+  "scripts": {
+    "serve": "live-server"
+  },
+  "author": "",
+  "license": "ISC"
+}
