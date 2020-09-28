@@ -3,6 +3,10 @@ const THREE = window.THREE;
 export default class Config {
     constructor() {
         this.init();
+
+        this.clock = new THREE.Clock();
+        this.speed = 2; //units a second
+        this.delta = 0;
     }
 
     init() {
@@ -20,6 +24,8 @@ export default class Config {
 
     animate(callback) {
         requestAnimationFrame(() => this.animate(callback));
+
+        this.delta = this.clock.getDelta();
 
         callback();
 
