@@ -12,20 +12,21 @@ export default class Config {
     init() {
         this.scene      = new THREE.Scene();
         this.camera     = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        this.renderer   = new THREE.WebGLRenderer({antialias: true});
-        this.axesHelper = new THREE.AxesHelper(5);
+        this.renderer   = new THREE.WebGLRenderer({antialias: true, alpha: true});
+
+        this.raycaster = new THREE.Raycaster();
+        this.mouse = new THREE.Vector2();
 
         this.camera.position.z = 2;
 
         this.renderer.setSize( window.innerWidth, window.innerHeight );
         document.querySelector('#three').appendChild(this.renderer.domElement);
-        this.scene.add(this.axesHelper);
     }
-
     animate(callback) {
         requestAnimationFrame(() => this.animate(callback));
 
         this.delta = this.clock.getDelta();
+        this.raycaster.setFromCamera(this.mouse, this.camera);
 
         callback();
 
